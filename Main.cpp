@@ -4,67 +4,73 @@
 
 int main()
 {
-	int iGuess;
+	srand(time(NULL));
+
+	/// created a guess for the random number and the player response.
+	int guess;
 	int answer;
 
+
+	/// created a min and max.
 	int min = 1;
 	int max = 100;
 
-	srand(time(NULL));
-
+	//Ask the player to think of a number within range
 	std::cout << "Think of a number between 1 and 100" << std::endl;
-
 	system("pause");
 	system("cls");
 
 	
 
 	bool isCorrect = false;
-
+	/// <summary>
+	/// The loop where the you get the random number and say if its higher or lower until you get to your number
+	/// </summary>
+	/// <returns></returns>
 	while (isCorrect == false)
 	{
-		iGuess = rand() % (max - min) + min;
+		//selects a random number 
+		guess = rand() % (max - min) + min;
+		int currentNum = guess;
 
-		int currentNum = iGuess;
-		std::cout << "Is this your number " << iGuess << "?" << std::endl;
-		std::cout << "If yes then press 1. " << "If no then press 2." << std::endl;
+		//Shows the number
+		std::cout << "Is this your number " << guess << "?\n\n";
 
+		//Ask if the number is higher, lower, or equal
+		std::cout << "Is your number higher, lower, or equal?\n"
+			<< "1. Higher\n"
+			<< "2. Lower\n"
+			<< "3. Equal\n\n";
 		std::cin >> answer;
-
 		system("cls");
 
+		//Checks if the player has cheated
 		if (max - min == 1)
 		{
-			std::cout << "Git Good Cheater!" << std::endl;
+			std::cout << "Git Good Cheater!\n";
 			system("pause");
-			return 0;
-		}
-
-		if (answer == 1)
 			isCorrect = true;
-
+		}
+		/// <summary>
+		/// if your number is higher lower or equal
+		/// </summary>
+		/// <returns></returns>
+		if (answer == 1)
+		{
+			min = currentNum;
+		}
 		else if (answer == 2)
 		{
-			std::cout << "Was your number higher or lower." << std::endl;
-			std::cout << "If Higher then press 1. " << "If Lower then press 2." << std::endl;
-
-			std::cin >> answer;
-
-			system("cls");
-
-			if (answer == 1)
-			{
-				min = currentNum; 
-			}
-			else if (answer == 2)
-			{
-				max = currentNum;
-			}
+			max = currentNum;
+		}
+		//if that is your number
+		else if (answer == 3)
+		{
+			std::cout << "Yeah Baby!! That's what i been waiting for!!!!\n";
+			system("pause");
+			isCorrect = true;
 		}
 	}
-
-
-
 	return 0;
 }
 
