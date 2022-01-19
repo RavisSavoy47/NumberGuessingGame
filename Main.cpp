@@ -70,6 +70,13 @@ int main()
 			system("pause");
 			isCorrect = true;
 		}
+		//if you type anything other than 1, 2, 3
+		else
+		{
+			std::cout << "Ummm Help!\n";
+			system("pause");
+			isCorrect = true;
+		}
 	}
 	return 0;
 }
